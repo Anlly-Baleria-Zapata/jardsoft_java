@@ -1,0 +1,40 @@
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd" [
+	<!ENTITY serverTimezone "entity-value">
+]>
+
+<hibernate-configuration>
+
+    <session-factory>
+
+         <!-- Especifica el controlador JDBC para MySQL -->
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        
+        <!-- URL de conexión a la base de datos MySQL -->
+        <property name="connection.url">jdbc:mysql://localhost:3306/proyectjard?useSSL=false</property>
+        
+        <!-- Nombre de usuario para la conexión a la base de datos MySQL -->
+        <property name="connection.username">root</property>
+        
+        <!-- Contraseña para la conexión a la base de datos MySQL. -->
+        <property name="connection.password"></property>
+
+        <!-- Tamaño del pool de conexiones JDBC. Se ha establecido en 1, lo que significa que solo habrá una conexión en el pool.
+          En entornos de producción, normalmente se establecería en un valor mayor para permitir múltiples conexiones concurrentes. -->
+        <property name="connection.pool_size">1</property>
+
+         <!-- Dialecto SQL que Hibernate utilizará para generar las consultas y las instrucciones SQL específicas del motor de base de datos. 
+         En este caso, se está utilizando el dialecto de MySQL. -->
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+
+      	<!-- Configura si Hibernate debe imprimir las consultas SQL generadas en la consola. 
+      	Está configurado como "true", lo que significa que las consultas se mostrarán en la consola. -->
+        <property name="show_sql">true</property>
+
+		<!-- Establece el contexto de la sesión actual. En este caso, se ha establecido en "thread", lo que significa que se utilizará el contexto de sesión actual vinculado al hilo. 
+		Hay otros valores posibles para esta propiedad dependiendo de la configuración y el entorno de la aplicación. -->
+        <property name="current_session_context_class">thread</property>
+
+    </session-factory> 
+    
+</hibernate-configuration>
